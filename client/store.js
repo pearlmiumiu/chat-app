@@ -59,12 +59,9 @@ export function postMessage(messageData) {
     axios.post('/api/messages', messageData)
     .then(res => res.data)
     .then(newMessage => {
-      //console.log('----------------', newMessage)
       dispatch(gotNewMessageFromServer(newMessage));
-
-
       socket.emit('new-message', newMessage);
-      console.log('----------------', newMessage)
+    
     });
   }
 }
@@ -81,7 +78,9 @@ const initialState={
 
 //reducer
 function reducer(state=initialState, action){
+	console.log('abc,,,,', action.type);
 	switch(action.type){
+		
 		case GOT_MESSAGES_FROM_SERVER:
 			return Object.assign({}, state, {messages:action.messages})
 		case WRITE_MESSAGE:

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import store,{writeMessage, postMessage} from '../store';
-//import axios from 'axios';
 import socket from '../socket';
 
 export default class NewMessageEntry extends Component {
@@ -34,17 +33,10 @@ export default class NewMessageEntry extends Component {
      
     const messageData={content, channelId, name}
 
-    //console.log('%%%%%%%%%%%%%', messageData)
-
+    
     const postMessageThunk=postMessage(messageData)
     store.dispatch(postMessageThunk)
-    // axios.post('/api/messages', {content, channelId})
-    //       .then(res=>res.data)
-    //       .then(message=>{
-    //         const action=gotNewMessageFromServer(message)
-    //         store.dispatch(action)
-    //         socket.emit('new-message', message)  //connect to socket connection on server index.js
-    //       })
+    
 
   }
 
